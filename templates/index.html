@@ -6,14 +6,26 @@
     <title>E-wish</title>
 </head>
     <body>
-        <form>
-            <input type="text" name="wish" >
-            <input type="text" name="image" >
-        </form>
+        <div>
+            <input type="text" name="wish" id="wish">
+            <br>
+            <input type="text" name="image" id="image">
+            <button onclick="link()">make link</button>
+            <p id="url"></p>
+        </div>
+        <br>
         <form action = "/success" method = "post" enctype="multipart/form-data">   
             <input type="file" name="file" />   
             <input type = "submit" value="Upload">   
-        </form>   
+        </form>
+        <script>
+            function link() {
+                var wish = document.getElementById("wish").value;
+                var image = document.getElementById("image").value;
+                var text = "http://127.0.0.1:80/wish/" + wish + "/" + image;
+                document.getElementById("url").innerHTML = text;
+            }
+        </script>  
     </body>   
 </body>
 </html>
