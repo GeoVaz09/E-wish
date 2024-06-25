@@ -1,13 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-wish</title>
-</head>
-<body>
-    <h1 style="font-size:10vw; text-align:center;">I wish you</h1>
-    <h1 style="font-size:10vw; text-align:center;">{{name}}</h1>
-</body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-wish</title>
+        <style>
+            .boton-elegante {
+  padding: 15px 30px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
 
+}
+
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: scale(0);
+  transition: transform 0.5s ease;
+  font-family: Arial;
+}
+
+.boton-elegante:hover::after {
+  transform: scale(4);
+  font-family: Arial;
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+  font-family: Arial;
+}
+.body{
+    background-color: #212121;
+    font-family: Arial;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  font-family: Arial;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+  font-family: Arial;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  font-family: Arial;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+  font-family: Arial;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+  font-family: Arial;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Arial;
+}
+
+.signin {
+  text-align: center;
+  font-family: Arial;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+  font-family: Arial;
+}
+
+.signin a {
+  color: #00bfff;
+  font-family: Arial;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+  font-family: Arial;
+}
+
+.form label {
+  position: relative;
+  font-family: Arial;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  font-family: Arial;
+}
+
+.form label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+  font-family: Arial;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+  font-family: Arial;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+  font-family: Arial;
+}
+
+.input {
+  font-size: medium;
+  font-family: Arial;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #00bfff;
+  font-family: Arial;
+}
+
+.submit:hover {
+  background-color: #00bfff96;
+  font-family: Arial;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+    font-family: Arial;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+    font-family: Arial;
+  }
+}
+
+        </style>
+    </head>
+    <body class="body">
+        <div>
+            <button class="boton-elegante" href="#">Home</button>
+            <button class="boton-elegante" href="#">About</button>
+            <button class="boton-elegante" href="#">Support</button>
+        </div>
+        <br>
+
+
+        <div class="form">
+        <p class="title">Make an E-wish Card </p>
+        <p class="message">No registration requiered!</p>
+                
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="sender">
+            <span>Sender Name</span>
+        </label> 
+            
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="wish">
+            <span>Wish</span>
+        </label>
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="image">
+            <span>image URL</span>
+        </label>
+        <button onclick="link()" class="submit">Make Link</button>
+        <br>
+        <p class="signin"id="url"></p>
+        </div>
+
+
+        <br>
+        <script>
+            function link() {
+                var wish = document.getElementById("wish").value;
+                var image = document.getElementById("image").value;
+                var sender = document.getElementById("sender").value;
+                var text = "http://127.0.0.1:80/wish/" + wish + "/" + image + "/" + sender;
+                document.getElementById("url").innerHTML = text;
+            }
+        </script>  
+    </body>   
+</html>
