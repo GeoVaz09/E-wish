@@ -35,22 +35,20 @@
   );
   transform: scale(0);
   transition: transform 0.5s ease;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .boton-elegante:hover::after {
   transform: scale(4);
-  font-family: Arial;
 }
 
 .boton-elegante:hover {
   border-color: #666666;
   background: #292929;
-  font-family: Arial;
+  font-family: Verdana;
 }
 .body{
     background-color: #212121;
-    font-family: Arial;
 }
 
 .form {
@@ -64,7 +62,7 @@
   background-color: #1a1a1a;
   color: #fff;
   border: 1px solid #333;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .title {
@@ -76,20 +74,20 @@
   align-items: center;
   padding-left: 30px;
   color: #00bfff;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .title::before {
   width: 18px;
   height: 18px;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .title::after {
   width: 18px;
   height: 18px;
   animation: pulse 1s linear infinite;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .title::before,
@@ -101,41 +99,41 @@
   border-radius: 50%;
   left: 0px;
   background-color: #00bfff;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .message, 
 .signin {
   font-size: 14.5px;
   color: rgba(255, 255, 255, 0.7);
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .signin {
   text-align: center;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .signin a:hover {
   text-decoration: underline royalblue;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .signin a {
   color: #00bfff;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .flex {
   display: flex;
   width: 100%;
   gap: 6px;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .form label {
   position: relative;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .form label .input {
@@ -146,7 +144,7 @@
   outline: 0;
   border: 1px solid rgba(105, 105, 105, 0.397);
   border-radius: 10px;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .form label .input + span {
@@ -157,13 +155,13 @@
   font-size: 0.9em;
   cursor: text;
   transition: 0.3s ease;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .form label .input:placeholder-shown + span {
   top: 12.5px;
   font-size: 0.9em;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .form label .input:focus + span,
@@ -172,12 +170,12 @@
   top: 0px;
   font-size: 0.7em;
   font-weight: 600;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .input {
   font-size: medium;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .submit {
@@ -189,28 +187,24 @@
   font-size: 16px;
   transform: .3s ease;
   background-color: #00bfff;
-  font-family: Arial;
+  font-family: Verdana;
 }
 
 .submit:hover {
   background-color: #00bfff96;
-  font-family: Arial;
 }
 
 @keyframes pulse {
   from {
     transform: scale(0.9);
     opacity: 1;
-    font-family: Arial;
   }
 
   to {
     transform: scale(1.8);
     opacity: 0;
-    font-family: Arial;
   }
 }
-
         </style>
     </head>
     <body class="body">
@@ -240,20 +234,42 @@
             <span>image URL</span>
         </label>
         <button onclick="link()" class="submit">Make Link</button>
-        <br>
-        <p class="signin"id="url"></p>
         </div>
 
 
         <br>
         <script>
-            function link() {
-                var wish = document.getElementById("wish").value;
-                var image = document.getElementById("image").value;
-                var sender = document.getElementById("sender").value;
-                var text = "http://127.0.0.1:80/wish/" + wish + "/" + image + "/" + sender;
-                document.getElementById("url").innerHTML = text;
-            }
-        </script>  
+          async function link() {
+              var wish = document.getElementById("wish").value;
+              var image = document.getElementById("image").value;
+              var sender = document.getElementById("sender").value;
+  
+              var postData = {
+                  url: image
+              };
+  
+              try {
+                  let response = await fetch("http://127.0.0.1:80/post_url", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify(postData)
+                  });
+  
+                  let result = await response.json();
+                  let code = result.code || "None";
+  
+                  var text = "http://127.0.0.1:80" + "/" + "wish" + "/" + sender + "/" + wish + "/" + code;
+                  navigator.clipboard.writeText(text);
+                  alert("Link Copied!");
+              } catch (error) {
+                  console.error("Error:", error);
+                  var text = "http://127.0.0.1:80" + "/" + "wish" + "/" + sender + "/" + wish + "/" + "None";
+                  navigator.clipboard.writeText(text);
+                  alert("Error occurred! Link Copied with 'None' code.");
+              }
+          }
+      </script>  
     </body>   
 </html>
