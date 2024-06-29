@@ -1,32 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-wish</title>
-</head>
-    <body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-wish</title>
+        <style>
+            .boton-elegante {
+  padding: 15px 30px;
+  border: 2px solid #2c2c2c;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+
+}
+
+.boton-elegante::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: scale(0);
+  transition: transform 0.5s ease;
+  font-family: Verdana;
+}
+
+.boton-elegante:hover::after {
+  transform: scale(4);
+}
+
+.boton-elegante:hover {
+  border-color: #666666;
+  background: #292929;
+  font-family: Verdana;
+}
+.body{
+    background-color: #212121;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  font-family: Verdana;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+  font-family: Verdana;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+  font-family: Verdana;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+  font-family: Verdana;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #00bfff;
+  font-family: Verdana;
+}
+
+.message, 
+.signin {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Verdana;
+}
+
+.signin {
+  text-align: center;
+  font-family: Verdana;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+  font-family: Verdana;
+}
+
+.signin a {
+  color: #00bfff;
+  font-family: Verdana;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 6px;
+  font-family: Verdana;
+}
+
+.form label {
+  position: relative;
+  font-family: Verdana;
+}
+
+.form label .input {
+  background-color: #333;
+  color: #fff;
+  width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  font-family: Verdana;
+}
+
+.form label .input + span {
+  color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+  font-family: Verdana;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+  font-family: Verdana;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #00bfff;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+  font-family: Verdana;
+}
+
+.input {
+  font-size: medium;
+  font-family: Verdana;
+}
+
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #00bfff;
+  font-family: Verdana;
+}
+
+.submit:hover {
+  background-color: #00bfff96;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+        </style>
+    </head>
+    <body class="body">
         <div>
-            <input type="text" name="wish" id="wish">
-            <br>
-            <input type="text" name="image" id="image">
-            <button onclick="link()">make link</button>
-            <p id="url"></p>
+            <button class="boton-elegante" href="#">Home</button>
+            <button class="boton-elegante" href="#">About</button>
+            <button class="boton-elegante" href="#">Support</button>
         </div>
         <br>
-        <form action = "/success" method = "post" enctype="multipart/form-data">   
-            <input type="file" name="file" />   
-            <input type = "submit" value="Upload">   
-        </form>
-        <script>
-            function link() {
-                var wish = document.getElementById("wish").value;
-                var image = document.getElementById("image").value;
-                var text = "http://127.0.0.1:80/wish/" + wish + "/" + image;
-                document.getElementById("url").innerHTML = text;
-            }
-        </script>  
-    </body>   
-</body>
-</html>
 
+
+        <div class="form">
+        <p class="title">Make an E-wish Card </p>
+        <p class="message">No registration requiered!</p>
+                
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="sender">
+            <span>Sender Name</span>
+        </label> 
+            
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="wish">
+            <span>Wish</span>
+        </label>
+        <label>
+            <input class="input" type="text" placeholder="" required="" id="image">
+            <span>image URL</span>
+        </label>
+        <button onclick="link()" class="submit">Make Link</button>
+        </div>
+
+
+        <br>
+        <script>
+          async function link() {
+              var wish = document.getElementById("wish").value;
+              var image = document.getElementById("image").value;
+              var sender = document.getElementById("sender").value;
+  
+              var postData = {
+                  url: image
+              };
+  
+              try {
+                  let response = await fetch("http://127.0.0.1:80/post_url", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify(postData)
+                  });
+  
+                  let result = await response.json();
+                  let code = result.code || "None";
+  
+                  var text = "http://127.0.0.1:80" + "/" + "wish" + "/" + sender + "/" + wish + "/" + code;
+                  navigator.clipboard.writeText(text);
+                  alert("Link Copied!");
+              } catch (error) {
+                  console.error("Error:", error);
+                  var text = "http://127.0.0.1:80" + "/" + "wish" + "/" + sender + "/" + wish + "/" + "None";
+                  navigator.clipboard.writeText(text);
+                  alert("Error occurred! Link Copied with 'None' code.");
+              }
+          }
+      </script>  
+    </body>   
+</html>
