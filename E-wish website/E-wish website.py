@@ -33,7 +33,15 @@ def get_url_by_code(code):
 def index():
      return render_template('index.html')
 
-# POST request to save URL and get a code
+@app.route('/about')
+def index():
+     return render_template('about.html')
+
+@app.route('/support')
+def index():
+     return render_template('support.html')
+
+
 @app.route('/post_url', methods=['POST'])
 def post_url():
     data = request.get_json()
@@ -44,7 +52,7 @@ def post_url():
     save_url_code(url, code)
     return jsonify({"message": "URL saved", "code": code})
 
-# GET request to retrieve URL by code
+
 @app.route('/wish/<sender>/<wish>/<code>', methods=['GET'])
 def get_wish(sender, wish, code):
     url = get_url_by_code(code)

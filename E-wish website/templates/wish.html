@@ -73,7 +73,7 @@
 </head>
 <body class="body">
     <div>
-        <button class="boton-elegante" href="#">Home</button>
+        <button class="boton-elegante" href="http://192.168.0.127:5000/">Home</button>
         <button class="boton-elegante" href="#">About</button>
         <button class="boton-elegante" href="#">Support</button>
     </div>
@@ -86,7 +86,7 @@
     <h1 class="wish">I wish you</h1>
     <h1 class="wish">{{ wish }}</h1>
     <br>
-    {% if image %}
+    {% if image and image != "None"%}
         <img src="{{ image }}" class="center">
     {% endif %}
 </body>
