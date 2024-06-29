@@ -55,7 +55,20 @@
 
         .body {
             background-color: #212121;
+            font-family: Verdana;
+            color: #ffffff;
         }
+
+        .wish{
+          font-size:10vw;
+          text-align:center;
+        }
+
+        .sender{
+          font-size:5vw;
+          text-align:left;
+        }
+
     </style>
 </head>
 <body class="body">
@@ -66,12 +79,12 @@
     </div>
     <br>
     <div>
-        <h1 style="font-size:5vw; text-align:left;">From:</h1>
-        <h1 style="font-size:5vw; text-align:left;">{{ sender }}</h1>
+        <h1 class="sender">From:</h1>
+        <h1 class="sender">{{ sender }}</h1>
     </div>
     <br>
-    <h1 style="font-size:10vw; text-align:center;">I wish you</h1>
-    <h1 style="font-size:10vw; text-align:center;">{{ wish }}</h1>
+    <h1 class="wish">I wish you</h1>
+    <h1 class="wish">{{ wish }}</h1>
     <br>
     {% if image %}
         <img src="{{ image }}" class="center">
