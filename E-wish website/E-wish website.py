@@ -33,15 +33,6 @@ def get_url_by_code(code):
 def index():
      return render_template('index.html')
 
-@app.route('/about')
-def index():
-     return render_template('about.html')
-
-@app.route('/support')
-def index():
-     return render_template('support.html')
-
-
 @app.route('/post_url', methods=['POST'])
 def post_url():
     data = request.get_json()

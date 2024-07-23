@@ -45,6 +45,7 @@
         .body {
             background-color: #212121;
             font-family: Verdana;
+            color: #ffffff;
         }
 
         .form {
@@ -179,17 +180,46 @@
                 opacity: 0;
             }
         }
+
+        .h1{
+          font-size:5vw;
+          text-align:center;
+        }
+
+        .p{
+          font-size:2,5vw;
+          text-align:center;
+        }
+
+        .a{
+            font-size:2,5vw;
+            text-align:center;
+            color: #00bfff;
+            text-decoration: none;
+
+        }
+
+        .a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 10px;
+        }
+
     </style>
 </head>
 <body class="body">
-    <div>
-        <button class="boton-elegante" href="http://192.168.0.127:5000/">Home</button>
-        <button class="boton-elegante" href="#">About</button>
-        <button class="boton-elegante" href="#">Support</button>
+    <div class="container">
+        <h1 class="h1">E-wish</h1>
+        <p class="p"><strong>E-wish</strong> is a project to send wishes to family and loved ones. No Registration required!! Just add the fields and a link is made, ready to be sent to the recipients. Currently it is built in Flask (for Backend) and some HTML, CSS (for Frontend). Later on there will be more added into it.</p>
+        <p class="p">Thanks to <a class="a" href="https://uiverse.io/ammarsaa/chatty-firefox-25" target="_blank">@ammarsaa</a> and <a class="a" href="https://uiverse.io/iZOXVL/wise-goat-75" target="_blank">@iZOXVL</a> for the UI code from UIVERCE. It was super helpful.</p>
+        <p class="p">This is a project for Arcade.</p>
     </div>
-    <br>
+<div class="form">
 
-    <div class="form">
         <p class="title">Make an E-wish Card</p>
         <p class="message">No registration required!</p>
 
