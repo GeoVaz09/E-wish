@@ -52,4 +52,4 @@ def get_wish(sender, wish, code):
     return render_template('wish.html', sender=sender, wish=wish, image=url)
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", port=80)

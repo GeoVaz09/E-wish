@@ -216,76 +216,50 @@
         </label>
         <button onclick="link()" class="submit">Make Link</button>
     </div>
-
-    <br>
+    
     <script>
         async function link() {
             var wish = document.getElementById("wish").value;
             var image = document.getElementById("image").value;
             var sender = document.getElementById("sender").value;
-
-            var postData = {
-                url: image
-            };
-
+    
+            var postData = { url: image };
+            var baseUrl = "http://192.168.0.127:5000/wish/";
+    
             try {
                 let response = await fetch("http://192.168.0.127:5000/post_url", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(postData)
                 });
-
+    
                 let result = await response.json();
-                let code = result.code || "None";
-
-                var text = "http://192.168.0.127:5000/wish/" + sender + "/" + wish + "/" + code;
-                
-                // Attempt to use clipboard API
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    await navigator.clipboard.writeText(text);
-                } else {
-                    // Fallback method
-                    var textArea = document.createElement("textarea");
-                    textArea.value = text;
-                    document.body.appendChild(textArea);
-                    textArea.focus();
-                    textArea.select();
-                    try {
-                        document.execCommand('copy');
-                        alert("Link Copied!");
-                    } catch (err) {
-                        console.error("Fallback: Oops, unable to copy", err);
-                        alert("Fallback: Unable to copy");
-                    }
-                    document.body.removeChild(textArea);
-                }
-                alert("Link Copied!");
+                var code = result.code || "None";
             } catch (error) {
                 console.error("Error:", error);
-                var text = "http://192.168.0.127:5000/wish/" + sender + "/" + wish + "/" + "None";
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    await navigator.clipboard.writeText(text);
-                } else {
-                    // Fallback method
-                    var textArea = document.createElement("textarea");
-                    textArea.value = text;
-                    document.body.appendChild(textArea);
-                    textArea.focus();
-                    textArea.select();
-                    try {
-                        document.execCommand('copy');
-                        alert("Link Copied!");
-                    } catch (err) {
-                        console.error("Fallback: Oops, unable to copy", err);
-                        alert("Fallback: Unable to copy");
-                    }
-                    document.body.removeChild(textArea);
+                var code = "None";
+            }
+    
+            var text = `${baseUrl}${sender}/${wish}/${code}`;
+    
+            try {
+                await navigator.clipboard.writeText(text);
+                alert("Link Copied!");
+            } catch (err) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert("Link Copied!");
+                } catch (err) {
+                    console.error("Fallback: Unable to copy", err);
+                    alert("Unable to copy link.");
                 }
-                alert("Error occurred! Link Copied with 'None' code.");
+                document.body.removeChild(textArea);
             }
         }
-    </script>
+    </script>    
 </body>
 </html>
