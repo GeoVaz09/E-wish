@@ -216,7 +216,7 @@
         </label>
         <button onclick="link()" class="submit">Make Link</button>
     </div>
-    
+
     <script>
         async function link() {
             var wish = document.getElementById("wish").value;
@@ -224,10 +224,10 @@
             var sender = document.getElementById("sender").value;
     
             var postData = { url: image };
-            var baseUrl = "http://192.168.0.127:5000/wish/";
+            var baseUrl = "http://e-wish.ddnsfree.com:80/wish/";
     
             try {
-                let response = await fetch("http://192.168.0.127:5000/post_url", {
+                let response = await fetch("http://e-wish.ddnsfree.com:80/post_url", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(postData)
