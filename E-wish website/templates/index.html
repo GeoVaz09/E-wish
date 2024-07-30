@@ -224,10 +224,10 @@
             var sender = document.getElementById("sender").value;
     
             var postData = { url: image };
-            var baseUrl = "http://e-wish.ddnsfree.com:80/wish/";
+            var baseUrl = "http://e-wish.ddnsfree.com/wish/";
     
             try {
-                let response = await fetch("http://e-wish.ddnsfree.com:80/post_url", {
+                let response = await fetch("http://e-wish.ddnsfree.com/post_url", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(postData)
