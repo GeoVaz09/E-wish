@@ -5,188 +5,203 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-wish</title>
     <style>
-        .body {
-            background-color: #212121;
-            font-family: Verdana;
-            color: #ffffff;
-        }
+.body{     
+    background-color: #212121;
+    font-family: Verdana;
+    color: #ffffff;
+}
 
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 20px;
-            border-radius: 20px;
-            position: relative;
-            background-color: #1a1a1a;
-            color: #fff;
-            border: 1px solid #333;
-            max-width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    max-width: 100%;  /* Set to full width */
+    width: 80%;  /* Default width */
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+}
 
-        .title {
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: -1px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding-left: 30px;
-            color: #00bfff;
-        }
+@media (min-width: 768px) {
+    .form {
+        width: 50%;  /* Wider width for larger screens */
+    }
+}
 
-        .title::before,
-        .title::after {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            border-radius: 50%;
-            left: 0px;
-            background-color: #00bfff;
-        }
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    color: #00bfff;
+}
 
-        .title::after {
-            animation: pulse 1s linear infinite;
-        }
+.title::before,
+.title::after {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    left: 0px;
+    background-color: #00bfff;
+}
 
-        .message,
-        .signin {
-            font-size: 14.5px;
-            color: rgba(255, 255, 255, 0.7);
-        }
+.title::after {
+    animation: pulse 1s linear infinite;
+}
 
-        .signin {
-            text-align: center;
-        }
+.message,
+.signin {
+    font-size: 14.5px;
+    color: rgba(255, 255, 255, 0.7);
+}
 
-        .signin a:hover {
-            text-decoration: underline royalblue;
-        }
+.signin {
+    text-align: center;
+}
 
-        .signin a {
-            color: #00bfff;
-        }
+.signin a:hover {
+    text-decoration: underline royalblue;
+}
 
-        .flex {
-            display: flex;
-            width: 100%;
-            gap: 6px;
-        }
+.signin a {
+    color: #00bfff;
+}
 
-        .form label {
-            position: relative;
-        }
+.flex {
+    display: flex;
+    width: 100%;
+    gap: 6px;
+}
 
-        .form label .input {
-            background-color: #333;
-            color: #fff;
-            width: 100%;
-            padding: 20px 05px 05px 10px;
-            outline: 0;
-            border: 1px solid rgba(105, 105, 105, 0.397);
-            border-radius: 10px;
-        }
+.form label {
+    position: relative;
+}
 
-        .form label .input + span {
-            color: rgba(255, 255, 255, 0.5);
-            position: absolute;
-            left: 10px;
-            top: 0px;
-            font-size: 0.9em;
-            cursor: text;
-            transition: 0.3s ease;
-        }
+.form label .input {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 20px 5px 5px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
 
-        .form label .input:placeholder-shown + span {
-            top: 12.5px;
-            font-size: 0.9em;
-        }
+.form label .input + span {
+    color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+}
 
-        .form label .input:focus + span,
-        .form label .input:valid + span {
-            color: #00bfff;
-            top: 0px;
-            font-size: 0.7em;
-            font-weight: 600;
-        }
+.form label .input:placeholder-shown + span {
+    top: 12.5px;
+    font-size: 0.9em;
+}
 
-        .input {
-            font-size: medium;
-        }
+.form label .input:focus + span,
+.form label .input:valid + span {
+    color: #00bfff;
+    top: 0px;
+    font-size: 0.7em;
+    font-weight: 600;
+}
 
-        .submit {
-            border: none;
-            outline: none;
-            padding: 10px;
-            border-radius: 10px;
-            color: #fff;
-            font-size: 16px;
-            transition: .3s ease;
-            background-color: #00bfff;
-        }
+.submit {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    transition: .3s ease;
+    background-color: #00bfff;
+}
 
-        .submit:hover {
-            background-color: #00bfff96;
-        }
+.submit:hover {
+    background-color: #00bfff96;
+}
 
-        @keyframes pulse {
-            from {
-                transform: scale(0.9);
-                opacity: 1;
-            }
+@keyframes pulse {
+    from {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.8);
+        opacity: 0;
+    }
+}
 
-            to {
-                transform: scale(1.8);
-                opacity: 0;
-            }
-        }
+.h1{
+    text-align: center;
+    color: #00bfff;
+}
 
-        .h1{
-          text-align:center;
-          color: #00bfff;
-        }
+@media (max-width: 600px) {
+    h1 {
+        font-size: 10vw;
+    }
+    .p {
+    font-size: 5vw;
+    text-align: center;
+    }
+    .a {
+    font-size: 5vw;
+    text-align: center;
+    color: #00bfff;
+    text-decoration: none;
+}
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 10vw;
-            }
-        }
+}
 
-        @media (min-width: 601px) {
-            h1 {
-                font-size: 3vw;
-            }
-        }
+@media (min-width: 601px) {
+    h1 {
+        font-size: 3vw;
+    }
+    .p {
+    font-size: 2.5vw;
+    text-align: center;
+    }
+    .a {
+    font-size: 2.5vw;
+    text-align: center;
+    color: #00bfff;
+    text-decoration: none;
+}
 
-        .p{
-          font-size:2,5vw;
-          text-align:center;
-        }
+}
 
-        .a{
-            font-size:2,5vw;
-            text-align:center;
-            color: #00bfff;
-            text-decoration: none;
+.a:hover {
+    text-decoration: underline;
+}
 
-        }
+.container {
+    max-width: 100%;  /* Set to full width */
+    width: 80%;  /* Default width */
+    margin: auto;
+    padding: 10px;
+}
 
-        .a:hover {
-            text-decoration: underline;
-        }
+.strong {
+    color: #00bfff;
+}
 
-        .container {
-            max-width: 500px;
-            margin: auto;
-            padding: 10px;
-        }
-
-        .strong{
-            color: #00bfff;
-        }
     </style>
 </head>
 <body class="body">
@@ -216,7 +231,6 @@
         </label>
         <button onclick="link()" class="submit">Make Link</button>
     </div>
-
     <script>
         async function link() {
             var wish = document.getElementById("wish").value;
@@ -227,7 +241,7 @@
             var baseUrl = "http://e-wish.ddnsfree.com/wish/";
     
             try {
-                let response = await fetch("http://e-wish.ddnsfree.com/post_url", {
+                let response = await fetch("/post_url", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(postData)
