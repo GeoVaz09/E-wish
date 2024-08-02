@@ -79,10 +79,18 @@
 </head>
 <body class="body">
     <div class="container">
-        <h1 class="h1">E-wish</h1>
-        <p class="p"><strong class="strong">E-wish</strong> is a project to send wishes to family and loved ones. So <strong class="strong">{{ sender }}</strong> wants to wish you <strong class="strong">{{ wish }}</strong>. if you want to make wishes like this one or want to learn more, go to our <strong><a class="a" href="http://e-wish.ddnsfree.com/" target="_blank">Homepage</a></strong>. No Registration required!!</p>
-        <p class="p">This is a project for <strong><a class="a" href="https://hackclub.com/arcade/?param=slack" target="_blank">Arcade</a></strong>  by George Vazakas.</p>
+        <h1 class="h1">E-Wish: A Personalized Message Just for You</h1>
+        <p class="p">
+            <strong class="strong">E-Wish</strong> is a platform designed to help you easily send heartfelt wishes to your family and loved ones. You've just received a special message from <strong class="strong">{{ sender }}</strong> wishing you <strong class="strong">{{ wish }}</strong>. 
+        </p>
+        <p class="p">
+            If you’d like to create your own personalized wishes like this one or want to learn more about how E-Wish works, visit our <strong><a class="a" href="http://e-wish.ddnsfree.com/" target="_blank">Homepage</a></strong>. No registration is required—just fill in the details, and you’re ready to share your wishes!
+        </p>
+        <p class="p">
+            This project is part of the <strong><a class="a" href="https://hackclub.com/arcade/?param=slack" target="_blank">Arcade</a></strong> initiative by George Vazakas. Explore more and discover how easy it is to spread joy with E-Wish.
+        </p>
     </div>
+    
     <br>
     {% if image and image != "None"%}
         <img src="{{ image }}" class="center">
