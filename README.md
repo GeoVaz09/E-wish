@@ -4,7 +4,6 @@
     <ul>
         <li><strong>No Registration Required:</strong> Simply enter your message, and a custom link is instantly created for easy sharing.</li>
         <li><strong>User-Friendly Interface:</strong> Designed with simplicity in mind, making it accessible for everyone.</li>
-        <li><strong>Self-Hosted Solution:</strong> E-Wish is self-hosted on a Raspberry Pi, showcasing the possibilities of personal web hosting on small-scale hardware.</li>
     </ul>
 <h2>Technology Stack:</h2>
     <ul>
