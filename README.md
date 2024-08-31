@@ -18,4 +18,4 @@
 <h2>About the Developer:</h2>
 <p><strong>E-Wish</strong> is a project by George Vazakas, developed as part of the <a href="https://hackclub.com/arcade/?param=slack">Arcade initiative</a>. Despite the challenges, this project reflects the potential of combining simple tools to create meaningful digital experiences.</p>
 
-<p>Ready to send some wishes? Visit the site and start sharing your personalized messages today: <a href="https://geovaz09.pythonanywhere.com/">E-Wish Site</a>.</p>
+<p>Ready to send some wishes? Visit the site and start sharing your personalized messages today: <a href="https://geovaz09.pythonanywhere.com/ewish/">E-Wish Site</a>.</p>
